@@ -25,6 +25,8 @@ class MainViewModel: ObservableObject {
     private var errorMessagePossible = String.LocalizationValue(stringLiteral: "errorMessagePossible")
     private var errorTitleIsReal = String.LocalizationValue(stringLiteral: "errorTitleIsReal")
     private var errorMessageIsReal = String.LocalizationValue(stringLiteral: "errorMessageIsReal")
+    private var errorTitleCount = String.LocalizationValue(stringLiteral: "errorTitleCount")
+    private var errorMessageCount = String.LocalizationValue(stringLiteral: "errorMessageCount")
  
     func addNewWord() {
         
@@ -43,6 +45,11 @@ class MainViewModel: ObservableObject {
         
         guard isRealWord(word: answer) else {
             wordErrorMessage(title: String(localized: errorTitleIsReal), message: String(localized: errorMessageIsReal))
+            return
+        }
+        
+        guard checkCharCount(word: answer) else {
+            wordErrorMessage(title: String(localized: errorTitleCount), message: String(localized: errorMessageCount))
             return
         }
         
@@ -71,6 +78,21 @@ class MainViewModel: ObservableObject {
     func isOriginalWord(word: String) -> Bool {
         
         !usedWords.contains(word)
+        
+    }
+    
+    func checkCharCount(word: String) -> Bool {
+        
+        if word.count < 3 {
+            
+            return false
+            
+        } else {
+            
+            return true
+            
+        }
+        
         
     }
     

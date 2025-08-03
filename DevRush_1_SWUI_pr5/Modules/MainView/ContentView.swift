@@ -22,6 +22,17 @@ struct ContentView: View {
     var body: some View {
 
         NavigationStack {
+            VStack {
+                Button {
+                    mainVM.startGame()
+                } label: {
+                    Text("New word")
+                }
+                .buttonStyle(.bordered)
+                .buttonBorderShape(.capsule)
+
+            }
+            
             List {
                 
                 Section {
@@ -36,7 +47,8 @@ struct ContentView: View {
                     Text(mainVM.errorMessage)
                 }
                 
-                .navigationTitle($mainVM.rootWord)
+                
+                
                 Section {
                     
                     ForEach(mainVM.usedWords, id: \.self) { word in
@@ -51,6 +63,8 @@ struct ContentView: View {
                 }
                 
             }
+            .navigationTitle($mainVM.rootWord)
+            .navigationBarTitleDisplayMode(.inline)
         }
         
     }
