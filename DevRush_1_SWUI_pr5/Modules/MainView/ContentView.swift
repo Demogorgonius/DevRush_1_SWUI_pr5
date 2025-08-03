@@ -30,6 +30,13 @@ struct ContentView: View {
                 .keyboardType(.asciiCapable)
                 .textInputAutocapitalization(.never)
                 .onSubmit(mainVM.addNewWord)
+                .onAppear(perform: mainVM.startGame)
+                
+                .alert(mainVM.errorTitle, isPresented: $mainVM.showingError) {} message: {
+                    Text(mainVM.errorMessage)
+                }
+                
+                .navigationTitle($mainVM.rootWord)
                 Section {
                     
                     ForEach(mainVM.usedWords, id: \.self) { word in
@@ -45,7 +52,7 @@ struct ContentView: View {
                 
             }
         }
-        .navigationTitle(mainVM.rootWord)
+        
     }
 }
 
