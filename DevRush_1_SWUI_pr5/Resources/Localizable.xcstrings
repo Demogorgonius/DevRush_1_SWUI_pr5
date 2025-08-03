@@ -1,6 +1,26 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "" : {
+
+    },
+    "errorMessageCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "there should be more than 3 characters in the word"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "В слове должно быть больше трех букв!"
+          }
+        }
+      }
+    },
     "errorMessageIsReal" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -48,6 +68,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы не можете составить это слово из ‘"
+          }
+        }
+      }
+    },
+    "errorTitleCount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The wrong number of characters"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неправильное количество  букв"
           }
         }
       }
@@ -102,6 +139,9 @@
           }
         }
       }
+    },
+    "New word" : {
+
     },
     "textFieldLabel" : {
       "extractionState" : "manual",
