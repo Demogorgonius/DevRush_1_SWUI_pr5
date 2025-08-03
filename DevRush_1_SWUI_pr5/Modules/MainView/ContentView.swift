@@ -27,11 +27,18 @@ struct ContentView: View {
                 Section {
                     TextField(textFldLabel, text: $mainVM.newWord)
                 }
+                .keyboardType(.asciiCapable)
+                .textInputAutocapitalization(.never)
                 .onSubmit(mainVM.addNewWord)
                 Section {
                     
                     ForEach(mainVM.usedWords, id: \.self) { word in
-                        Text(word)
+                       
+                        HStack {
+                            Image(systemName: "\(word.count).circle")
+                            Text(word)
+                        }
+                        
                     }
                     
                 }
