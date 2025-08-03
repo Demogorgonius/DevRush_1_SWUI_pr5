@@ -18,6 +18,13 @@ class MainViewModel: ObservableObject {
     @Published  var errorTitle = ""
     @Published  var errorMessage = ""
     @Published  var showingError = false
+    
+    private var errorTitleOriginal = String.LocalizationValue(stringLiteral: "errorTitleOriginal")
+    private var errorMessageOriginal = String.LocalizationValue(stringLiteral: "errorMessageOriginal")
+    private var errorTitlePossible = String.LocalizationValue(stringLiteral: "errorTitlePossible")
+    private var errorMessagePossible = String.LocalizationValue(stringLiteral: "errorMessagePossible")
+    private var errorTitleIsReal = String.LocalizationValue(stringLiteral: "errorTitleIsReal")
+    private var errorMessageIsReal = String.LocalizationValue(stringLiteral: "errorMessageIsReal")
  
     func addNewWord() {
         
@@ -25,17 +32,17 @@ class MainViewModel: ObservableObject {
         guard answer.count > 0 else { return }
         
         guard isOriginalWord(word: answer) else {
-            wordErrorMessage(title: "Word used already", message: "Be more original")
+            wordErrorMessage(title: String(localized: errorTitleOriginal), message: String(localized: errorMessageOriginal))
             return
         }
         
         guard isPossible(word: answer) else {
-            wordErrorMessage(title: "Word not possible", message: "You can't spell that word from '\(rootWord)'!")
+            wordErrorMessage(title: String(localized: errorTitlePossible), message: String(localized: errorMessagePossible) + rootWord + "'!")
             return
         }
         
         guard isRealWord(word: answer) else {
-            wordErrorMessage(title: "Word not recognized", message: "You can't just make then up, you know!")
+            wordErrorMessage(title: String(localized: errorTitleIsReal), message: String(localized: errorMessageIsReal))
             return
         }
         
