@@ -11,7 +11,7 @@ import SwiftUI
 struct DevRush_1_SWUI_pr5App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(mainVM: MainViewModel())
         }
     }
 }

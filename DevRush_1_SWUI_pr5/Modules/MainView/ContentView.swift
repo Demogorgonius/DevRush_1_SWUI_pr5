@@ -9,25 +9,39 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var usedWords = [String]()
-    @State private var rootWord: String = ""
+    @ObservedObject var mainVM: MainViewModel
+    
     @State private var newWord: String = ""
     
+    private var textFldLabel: LocalizedStringKey = LocalizedStringKey("textFieldLabel")
     
+    init(mainVM: MainViewModel) {
+        self.mainVM = mainVM
+    }
     
     var body: some View {
 
         NavigationStack {
             List {
+                
+                Section {
+                    TextField(textFldLabel, text: $mainVM.newWord)
+                }
+                .onSubmit(mainVM.addNewWord)
                 Section {
                     
+                    ForEach(mainVM.usedWords, id: \.self) { word in
+                        Text(word)
+                    }
+                    
                 }
+                
             }
         }
-        
+        .navigationTitle(mainVM.rootWord)
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(mainVM: MainViewModel())
 }
