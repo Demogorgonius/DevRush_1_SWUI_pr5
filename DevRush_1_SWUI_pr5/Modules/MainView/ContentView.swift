@@ -23,13 +23,29 @@ struct ContentView: View {
 
         NavigationStack {
             VStack {
-                Button {
-                    mainVM.startGame()
-                } label: {
-                    Text("New word")
+                HStack {
+                    
+                    Spacer(minLength: 10)
+                    
+                    Image(systemName: "medal.star.fill")
+                    Text(String(mainVM.hightScore))
+                    Spacer()
+                    
+                    Button {
+                        mainVM.startGame()
+                    } label: {
+                        Text(LocalizedStringKey("buttonTitle"))
+                    }
+                    .buttonStyle(.bordered)
+                    .buttonBorderShape(.capsule)
+                    
+                    Spacer()
+                    Image(systemName: "clock")
+                    Text(String(mainVM.currentScore))
+                    
+                    Spacer(minLength: 10)
+                    
                 }
-                .buttonStyle(.bordered)
-                .buttonBorderShape(.capsule)
 
             }
             

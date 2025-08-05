@@ -15,6 +15,9 @@ class MainViewModel: ObservableObject {
     @Published  var rootWord: String = ""
     @Published  var newWord: String = ""
     
+    @AppStorage("HightScore") var hightScore: Int = 0
+    @Published var currentScore: Int = 0
+    
     @Published  var errorTitle = ""
     @Published  var errorMessage = ""
     @Published  var showingError = false
@@ -56,7 +59,7 @@ class MainViewModel: ObservableObject {
         withAnimation {
             usedWords.insert(answer, at: 0)
         }
-        
+        currentScore = currentScore + answer.count
         newWord = ""
         
     }
@@ -67,6 +70,11 @@ class MainViewModel: ObservableObject {
             if let startWords = try? String(contentsOf: startWordURL, encoding: .windowsCP1251) {
                 let allWords = startWords.components(separatedBy: "\n")
                 rootWord = allWords.randomElement() ?? "silkworm"
+                if currentScore > 0 && currentScore > hightScore {
+                    hightScore = currentScore
+                }
+                currentScore = 0
+                usedWords.removeAll()
                 return
             }
         }

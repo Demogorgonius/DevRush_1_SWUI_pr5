@@ -2,7 +2,24 @@
   "sourceLanguage" : "ru",
   "strings" : {
     "" : {
-
+      "shouldTranslate" : false
+    },
+    "buttonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New word"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новое слово"
+          }
+        }
+      }
     },
     "errorMessageCount" : {
       "extractionState" : "manual",
@@ -141,7 +158,7 @@
       }
     },
     "New word" : {
-
+      "shouldTranslate" : false
     },
     "textFieldLabel" : {
       "extractionState" : "manual",
